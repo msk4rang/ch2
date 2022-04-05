@@ -25,7 +25,7 @@ public class RegisterController {
         binder.setValidator(new UserValidator());
     }
 
-
+    // test
     @GetMapping("/register/add")
     public String register()
     {
