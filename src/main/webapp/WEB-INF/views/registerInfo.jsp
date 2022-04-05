@@ -14,10 +14,11 @@
 <h1>name=${user.name}</h1>
 <h1>email=${user.email}</h1>
 <h1>birth=${user.birth}</h1>
+<h1>hobby=${user.hobby}</h1>
 <%--<h1>sns=<c:forEach var="val" items="${user.sns}" begin="0" step="1" varStatus="status">--%>
 <%--${val}<c:if test="${!status.last}">,</c:if>--%>
 <%--</c:forEach>--%>
-<h1>birth=${user.sns}</h1>
+<h1>sns=${user.sns}</h1>
 </h1>
 </body>
 </html>

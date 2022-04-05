@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page import="java.net.URLDecoder" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,9 +70,10 @@
     <title>Register</title>
 </head>
 <body>
-<form action="<c:url value="/register/save"/>" method="post" onsubmit="return formCheck(this)">
+<form action="<c:url value="/register/save"/>" method="post"><%-- onsubmit="return formCheck(this)">--%>
+<%--<form:form modelAttribute="user">--%>
     <div class="title">Register</div>
-    <div id="msg" class="msg">${URLDecoder.decode(param.msg, "utf-8")}</div>
+    <div id="msg" class="msg"><form:errors path="id"/></div>
     <label for="">아이디</label>
     <input class="input-field" type="text" name="id" placeholder="8~12자리의 영대소문자와 숫자 조합">
     <label for="">비밀번호</label>
@@ -82,12 +84,15 @@
     <input class="input-field" type="text" name="email" placeholder="example@fastcampus.co.kr">
     <label for="">생일</label>
     <input class="input-field" type="text" name="birth" placeholder="2020/12/31">
+    <label for="">취미</label>
+    <input class="input-field" type="text" name="hobby">
     <div class="sns-chk">
         <label><input type="checkbox" name="sns" value="facebook"/>페이스북</label>
         <label><input type="checkbox" name="sns" value="kakaotalk"/>카카오톡</label>
         <label><input type="checkbox" name="sns" value="instagram"/>인스타그램</label>
     </div>
     <button>회원 가입</button>
+<%--</form:form>--%>
 </form>
 <script>
     function formCheck(frm) {
@@ -95,11 +100,6 @@
 
         if(frm.id.value.length<3) {
             setMessage('id의 길이는 3이상이어야 합니다.', frm.id);
-            return false;
-        }
-
-        if(frm.pwd.value.length<3) {
-            setMessage('pwd의 길이는 3이상이어야 합니다.', frm.pwd);
             return false;
         }
 
